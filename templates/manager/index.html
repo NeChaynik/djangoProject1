@@ -1,0 +1,11 @@
+{% extends 'manager/base.html' %} {% block title %} Главная страница {% endblock %}
+{% block content %} {% if user.is_authenticated %}
+<h3>Username: {{ user.get_username }}</h3>
+<h3>Отправить на сервер...</h3>
+{{lists}}
+<form action="send_data" method="GET">
+  <button class="btn"><img src="https://sun9-48.userapi.com/impg/Y5HtEIfUNUb4NHFj8UhefxDu5YgteRjlAbXwXQ/9oiXbkPzTS8.jpg?size=549x345&quality=96&sign=b4c4161b26d22e53e89f5dc44a753e78&type=album"/></button>
+</form>
+{% else %}
+<li><a href="{% url 'login'%}?next={{request.path}}"> Please login</a></li>
+{% endif %} {% endblock %}
